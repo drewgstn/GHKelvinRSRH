@@ -8,24 +8,59 @@
 import SwiftUI
 
 struct RISheet: View {
+    @Environment(\.dismiss) private var dismiss
+    @State private var report: String = ""
+    @State private var showingAlert = false
+    @State private var isShowingSheet = false
     var body: some View {
-        NavigationView {
-            VStack(alignment: HorizontalAlignment .center) {
-                Image(systemName: "star.fill")
-                    .resizable()
-                    .foregroundColor(Color.gray)
-                     .scaledToFit()
-                     .frame(width: 60, height: 60)
-                Text("No Favorites")
-                    .fontWeight(.bold)
-                    .font(.system(size: 23))
-                Text("Your favorite conversions will appear here.")
-                    .fontWeight(.regular)
-                    .foregroundColor(Color.gray)
-                
+        NavigationStack {
+            List {
+                Section(header: Text("Report")) {
+                    TextField(
+                        "Please use Feedback Assistant to report.",
+                        text: $report
+                    )
+                    .multilineTextAlignment(.leading)
+                    .padding(.bottom, 200.0)
+                }
+                Section {
+                    Button {
+                        print("Edit button was tapped")
+                    } label: {
+                        Label("Add Attachment", systemImage: "paperclip")
+                    }
+                    .popover(isPresented: $showingAlert) {
+                    }
+                }
             }
-            .navigationTitle("MEOW")
+            
+            .navigationTitle("Report an Issue")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(leading:
+                                    Button("Cancel") {
+                                                showingAlert = true
+                                            }
+                                            .alert("Unable to Sumbit", isPresented: $showingAlert, actions: {
+                                                Button("Delete", role: .destructive, action: {dismiss()})
+                                                    }, message: {
+                                                        Text("Please use Feedback Assistant to submit bug reports. This feature is limited to final release.")
+                                                    })
+            .foregroundColor(.primary))
+            .fontWeight(.regular)
+            .navigationBarItems(trailing:
+                                    Button("Submit") {
+                                                showingAlert = true
+                                            }
+                                            .alert("Unable to Sumbit", isPresented: $showingAlert, actions: {
+                                                Button("Delete", role: .destructive, action: {dismiss()})
+                                                    }, message: {
+                                                        Text("Please use Feedback Assistant to submit bug reports. This feature is limited to final release.")
+                                                    })
+                .foregroundColor(.primary))
+                .fontWeight(.bold)
+            
         }
+        
     }
 }
 

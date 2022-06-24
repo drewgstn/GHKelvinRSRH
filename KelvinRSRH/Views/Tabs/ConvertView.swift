@@ -62,7 +62,7 @@ struct ConvertView: View {
                                 self.isShowingPopover = true
                     }
                     .padding(.vertical, -10.0)
-                    .foregroundColor(Color(UIColor.systemTeal))
+                    .foregroundColor(.accentColor)
                     .font(.caption)
                     .fontWeight(.bold)
                     .popover(isPresented: $isShowingPopover) {

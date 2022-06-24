@@ -12,7 +12,8 @@ import SwiftUI
 struct LocationView: View {
     @State private var searchText = ""
     @State private var isShowingSheet = false
-    @State var isPresented: Bool = false
+    @State var RIisPresented: Bool = false
+    @State var WEisPresented: Bool = false
     @Environment(\.openURL) private var openURL
     var body: some View {
         
@@ -59,8 +60,10 @@ struct LocationView: View {
             .navigationBarItems(trailing:
             Menu(content: {
                 Section {
-                    Button(action: EditLocations) {
-                        Label("Edit Widgets", systemImage: "slider.horizontal.below.square.and.square.filled")
+                    Button(action: {
+                        WEisPresented = true
+                    }){
+                        Label("Edit Widget", systemImage: "slider.horizontal.below.square.and.square.filled")
                     }
                     Button(action: EditLocations) {
                         Label("Notifications", systemImage: "bell.badge")
@@ -68,7 +71,7 @@ struct LocationView: View {
                 }
                 Section {
                     Button(action: {
-                        isPresented = true
+                        RIisPresented = true
                     }){
                         Label("Report an Issue", systemImage: "exclamationmark.bubble")
                     }
@@ -80,11 +83,14 @@ struct LocationView: View {
             }
             )
             .padding(.leading, 0.0)
-            .sheet(isPresented: $isPresented) {
+            .sheet(isPresented: $RIisPresented) {
                 RISheet()
             .foregroundColor(Color.secondary)
             }
-            .foregroundColor(Color.secondary)
+            .sheet(isPresented: $WEisPresented) {
+                WidgetEditingSheet()
+                    .foregroundColor(Color.secondary)
+            }
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)) {
             }
