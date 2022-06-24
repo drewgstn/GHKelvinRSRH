@@ -12,7 +12,7 @@ struct TabViews: View {
         TabView {
             ConvertView()
                 .tabItem {
-                    Label("Convert", systemImage: "function")
+                    Label("Convert", systemImage: "arrow.left.arrow.right")
                 }
             LocationView()
                 .tabItem {

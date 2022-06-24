@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2881030F2865FD1800FC6CF7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2881030E2865FD1800FC6CF7 /* README.md */; };
+		288103122865FED100FC6CF7 /* RISheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288103112865FED100FC6CF7 /* RISheet.swift */; };
 		288EED7928655591002B4BBD /* TabViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EED7828655591002B4BBD /* TabViews.swift */; };
 		288EED7B28655604002B4BBD /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EED7A28655604002B4BBD /* FavoritesView.swift */; };
 		288EED7D28655642002B4BBD /* InternalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EED7C28655642002B4BBD /* InternalView.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		2881030E2865FD1800FC6CF7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		288103112865FED100FC6CF7 /* RISheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RISheet.swift; sourceTree = "<group>"; };
 		288EED7828655591002B4BBD /* TabViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViews.swift; sourceTree = "<group>"; };
 		288EED7A28655604002B4BBD /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		288EED7C28655642002B4BBD /* InternalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalView.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		288103102865FEC200FC6CF7 /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				288103112865FED100FC6CF7 /* RISheet.swift */,
+			);
+			path = Sheets;
+			sourceTree = "<group>";
+		};
 		288EED762865554C002B4BBD /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				288EED7828655591002B4BBD /* TabViews.swift */,
+				288103102865FEC200FC6CF7 /* Sheets */,
 				288EED80286556C1002B4BBD /* ConvertView.swift */,
 				288EED7E2865568A002B4BBD /* LocationView.swift */,
 				288EED7A28655604002B4BBD /* FavoritesView.swift */,
@@ -302,6 +313,7 @@
 				288EED7F2865568A002B4BBD /* LocationView.swift in Sources */,
 				288EED7B28655604002B4BBD /* FavoritesView.swift in Sources */,
 				288EED81286556C1002B4BBD /* ConvertView.swift in Sources */,
+				288103122865FED100FC6CF7 /* RISheet.swift in Sources */,
 				28BF41D9285696880004FD0D /* ContentView.swift in Sources */,
 				28BF41D7285696880004FD0D /* KelvinRSRHApp.swift in Sources */,
 				288EED7928655591002B4BBD /* TabViews.swift in Sources */,

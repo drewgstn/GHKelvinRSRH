@@ -81,7 +81,7 @@ struct LocationView: View {
             )
             .padding(.leading, 0.0)
             .sheet(isPresented: $isPresented) {
-                Text("Sheet")
+                RISheet()
             .foregroundColor(Color.secondary)
             }
             .foregroundColor(Color.secondary)
