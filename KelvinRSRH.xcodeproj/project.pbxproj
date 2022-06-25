@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		286DBDDB28662343003C30F9 /* WidgetEditingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286DBDDA28662343003C30F9 /* WidgetEditingSheet.swift */; };
-		2881030F2865FD1800FC6CF7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2881030E2865FD1800FC6CF7 /* README.md */; };
 		288103122865FED100FC6CF7 /* RISheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288103112865FED100FC6CF7 /* RISheet.swift */; };
 		288EED7928655591002B4BBD /* TabViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EED7828655591002B4BBD /* TabViews.swift */; };
 		288EED7B28655604002B4BBD /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EED7A28655604002B4BBD /* FavoritesView.swift */; };
@@ -44,7 +43,6 @@
 
 /* Begin PBXFileReference section */
 		286DBDDA28662343003C30F9 /* WidgetEditingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEditingSheet.swift; sourceTree = "<group>"; };
-		2881030E2865FD1800FC6CF7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		288103112865FED100FC6CF7 /* RISheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RISheet.swift; sourceTree = "<group>"; };
 		288EED7828655591002B4BBD /* TabViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViews.swift; sourceTree = "<group>"; };
 		288EED7A28655604002B4BBD /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
@@ -62,7 +60,6 @@
 		28BF41F1285696890004FD0D /* KelvinRSRHUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KelvinRSRHUITests.swift; sourceTree = "<group>"; };
 		28BF41F3285696890004FD0D /* KelvinRSRHUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KelvinRSRHUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		28BF42022857E9650004FD0D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		28CECC782858F178005A6D46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +121,6 @@
 		28BF41CA285696880004FD0D = {
 			isa = PBXGroup;
 			children = (
-				2881030E2865FD1800FC6CF7 /* README.md */,
 				28BF41D5285696880004FD0D /* KelvinRSRH */,
 				28BF41E6285696890004FD0D /* KelvinRSRHTests */,
 				28BF41F0285696890004FD0D /* KelvinRSRHUITests */,
@@ -145,7 +141,6 @@
 		28BF41D5285696880004FD0D /* KelvinRSRH */ = {
 			isa = PBXGroup;
 			children = (
-				28CECC782858F178005A6D46 /* Info.plist */,
 				28BF41D6285696880004FD0D /* KelvinRSRHApp.swift */,
 				288EED762865554C002B4BBD /* Views */,
 				28BF42022857E9650004FD0D /* Settings.bundle */,
@@ -286,7 +281,6 @@
 			files = (
 				28BF41DE285696890004FD0D /* Preview Assets.xcassets in Resources */,
 				28BF42032857E9650004FD0D /* Settings.bundle in Resources */,
-				2881030F2865FD1800FC6CF7 /* README.md in Resources */,
 				28BF41DB285696890004FD0D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
