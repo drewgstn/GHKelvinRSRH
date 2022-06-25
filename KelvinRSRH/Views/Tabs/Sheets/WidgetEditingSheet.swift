@@ -30,12 +30,10 @@ struct WidgetEditingSheet: View {
                                     Button("Finish") {
                                                 showingAlert = true
                                             }
-                                            .alert("Unable to Sumbit", isPresented: $showingAlert, actions: {
-                                                Button("Delete", role: .destructive, action: {dismiss()})
-                                                Button("Cancel", role: .cancel, action: {dismiss()})
-                                                    .foregroundColor(.accentColor)
+                                            .alert("Error", isPresented: $showingAlert, actions: {
+                                                Button("OK", action: {dismiss()})
                                                     }, message: {
-                                                        Text("Please use Feedback Assistant to submit bug reports. This feature is limited to final release.")
+                                                        Text("SAVE_CURRENT_WIDGET_PREFERENCES does not exist.")
                                                     }) .foregroundColor(.accentColor)
                 .foregroundColor(.primary))
                 .fontWeight(.bold)

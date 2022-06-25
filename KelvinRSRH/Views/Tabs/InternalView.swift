@@ -6,46 +6,33 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct InternalView: View {
     @State var isPresented: Bool = false
+    @State private var selectedIndex = 0
+    @State private var selectedIndex1 = 0
     var body: some View {
-    Form{
-        Button(action: {
-            isPresented = true
-        }){
-            VStack{
-                Text("Celsius").font(.body)
-                Text("º").font(.caption).foregroundColor(.secondary)
+        Form {
+            HStack {
+                VStack {
+                    Picker("", selection: $selectedIndex, content: {
+                        Text("Celsius").tag(0)
+                        Text("Fahrenheit").tag(1)
+                        Text("Kelvin").tag(2)
+                    })
+                }
+                    VStack {
+                        Picker("", selection: $selectedIndex1, content: {
+                            Text("Kelvin").tag(0)
+                            Text("Celsius").tag(1)
+                            Text("Fahrenheit").tag(2)
+                        })
+                    }
+                }
             }
-            .foregroundColor(Color (.label))
-            .frame(minWidth: 0, maxWidth: 1000)
-            .frame(height: 50)
-            .background(Color("white"))
-            .cornerRadius(10)
-        }
-         Button(action: {
-            isPresented = true
-        }){
-            VStack{
-                Text("Kelvin").font(.body)
-                Text("K").font(.caption).foregroundColor(.secondary)
-            }
-            .foregroundColor (Color (.label))
-            .frame(minWidth: 0, maxWidth: 1000)
-            .frame(height: 50)
-            .background(Color("white"))
-            .cornerRadius(10)
-            
         }
     }
-    .padding(.leading, 0.0)
-    .sheet(isPresented: $isPresented) {
-        Text("Sheet")
-        
-    }
-}
-}
 // *DEPRECATED ~ DELETE FOR BETA BUILDS*
 /* struct OldLocationView : View {
     
