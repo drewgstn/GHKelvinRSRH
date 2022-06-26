@@ -23,8 +23,10 @@ struct TabViews: View {
                     Label("All Favorites", systemImage: "star.fill")
                 }
             InternalView()
+                .badge(1)
                 .tabItem {
                     Label("Internal", systemImage: "wallet.pass")
+                    
                 }
             }
         }

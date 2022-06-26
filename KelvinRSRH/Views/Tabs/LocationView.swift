@@ -6,6 +6,10 @@
 //
 
 import SwiftUI
+import CoreLocation
+import Speech
+import UserNotifications
+import UserNotificationsUI
 
 //Research WeatherKit and how implement it into MapsKit to create LocationView, should be in by v1(276.15)
 //Add launch sheet to display users steps to set up their CoreLocation data usage and how to add the wigets, v1(276.15)

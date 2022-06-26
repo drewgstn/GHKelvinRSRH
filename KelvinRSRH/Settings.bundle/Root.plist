@@ -12,9 +12,39 @@
 			<key>Title</key>
 			<string>Version</string>
 			<key>Key</key>
-			<string>version_preference</string>
+			<string>version_settings</string>
 			<key>DefaultValue</key>
 			<string>1.0(273.15)</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Widgets</string>
+			<key>Key</key>
+			<string>Widget_settings</string>
+			<key>DefaultValue</key>
+			<string>0</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Conversions</string>
+			<key>Key</key>
+			<string>Converstions_settings</string>
+			<key>DefaultValue</key>
+			<string>0</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Favorites</string>
+			<key>Key</key>
+			<string>favorites_settings</string>
+			<key>DefaultValue</key>
+			<string>0</string>
 		</dict>
 	</array>
 </dict>
