@@ -9,30 +9,72 @@ import SwiftUI
 import UIKit
 
 struct InternalView: View {
+    @State private var tempValue = 0.0
     @State var isPresented: Bool = false
     @State private var selectedIndex = 0
     @State private var selectedIndex1 = 0
     var body: some View {
-        Form {
-            HStack {
-                VStack {
-                    Picker("", selection: $selectedIndex, content: {
-                        Text("Celsius").tag(0)
-                        Text("Fahrenheit").tag(1)
-                        Text("Kelvin").tag(2)
-                    })
-                }
+        
+        
+        NavigationView {
+            ZStack {
+                Text("")
+                .frame(width: 1000, height: 770)
+                .background(Color("systemGray6.2"))
+                HStack {
+                    VStack {
+                        Picker("", selection: $selectedIndex, content: {
+                            Text("Celsius").tag(0)
+                            Text("Fahrenheit").tag(1)
+                            Text("Kelvin").tag(2)
+                                
+                            
+                        })
+                        .frame(width: 175 , height: 50)
+                        .background(Color("systemGray6.1"))
+                        .cornerRadius(10)
+                        
+                        
+                        
+                    }
                     VStack {
                         Picker("", selection: $selectedIndex1, content: {
                             Text("Kelvin").tag(0)
                             Text("Celsius").tag(1)
                             Text("Fahrenheit").tag(2)
                         })
+                        .frame(width: 175 , height: 50)
+                        .background(Color("systemGray6.1"))
+                        .cornerRadius(10)
+                    }
+                    
+                }
+                .padding(.bottom, 630)
+            }
+            VStack {
+                Form {
+                    Section {
+                        TextField("The value of temperature", value: $tempValue, format: .number)
+                            .keyboardType(.decimalPad)
+                            
+                            .frame(width: 200, height:50)
+                            .padding(.bottom, 150.0)
+                            .foregroundColor(Color(UIColor.systemGray3))
+                            .font(.system(size: 40))
+                            .fontWeight(.bold)
+                            .padding(.top, 200)
+                        
                     }
                 }
+                
             }
+            
         }
+        
     }
+    
+}
+    
 // *DEPRECATED ~ DELETE FOR BETA BUILDS*
 /* struct OldLocationView : View {
     

@@ -20,7 +20,7 @@ struct TabViews: View {
                 }
             FavoritesView()
                 .tabItem {
-                    Label("All Favorites", systemImage: "star.fill")
+                    Label("Favorites", systemImage: "star.fill")
                 }
             InternalView()
                 .badge(1)

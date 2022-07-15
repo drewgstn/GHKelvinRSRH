@@ -12,6 +12,7 @@ struct RISheet: View {
     @State private var report: String = ""
     @State private var showingAlert = false
     @State private var isShowingSheet = false
+    @State private var disabled = true
     var body: some View {
         NavigationStack {
             List {
@@ -38,29 +39,25 @@ struct RISheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(leading:
                                     Button("Cancel") {
-                                                showingAlert = true
-                                            }
-                                            .alert("Unable to Sumbit", isPresented: $showingAlert, actions: {
-                                                Button("Delete", role: .destructive, action: {dismiss()})
-                                                    }, message: {
-                                                        Text("Please use Feedback Assistant to submit bug reports. This feature is limited to final release.")
-                                                    })
-            .foregroundColor(.primary))
+                showingAlert = true
+            }
+                .alert("Unable to Sumbit", isPresented: $showingAlert, actions: {
+                    Button("Delete", role: .destructive, action: {dismiss()})
+                }, message: {
+                    Text("Please use Feedback Assistant to submit bug reports. This feature is limited to final release.")
+                })
+                    .foregroundColor(.primary))
             .fontWeight(.regular)
-            .navigationBarItems(trailing:
-                                    Button("Submit") {
-                                                showingAlert = true
-                                            }
-                                            .alert("Unable to Sumbit", isPresented: $showingAlert, actions: {
-                                                Button("Delete", role: .destructive, action: {dismiss()})
-                                                    }, message: {
-                                                        Text("Please use Feedback Assistant to submit bug reports. This feature is limited to final release.")
-                                                    })
-                .foregroundColor(.primary))
-                .fontWeight(.bold)
             
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") {
+                    }
+                    .disabled(disabled)
+                    .fontWeight(.bold)
+                }
+            }
         }
-        
     }
 }
 
