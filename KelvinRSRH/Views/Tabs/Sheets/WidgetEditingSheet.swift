@@ -10,15 +10,20 @@ import SwiftUI
 struct WidgetEditingSheet: View {
     @Environment(\.dismiss) private var dismiss
     @State private var report: String = ""
+    @State private var slider = 50.0
     @State private var showingAlert = false
     @State private var isShowingSheet = false
     var body: some View {
         NavigationStack {
-            VStack {
-                Slider(value: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant(10)/*@END_MENU_TOKEN@*/)
-                    .padding(75.0)
+            ScrollView {
+                VStack {
+                    Text("Unsupported Build")
+                        .padding(.top, 300)
+                    Text("Failed to load Widget Editor.")
+                        .padding(.top, 0)
+                }
             }
-            .navigationTitle("Edit Widget")
+            .navigationTitle("New Widget")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(leading:
                                     Button("Cancel") {
@@ -27,13 +32,13 @@ struct WidgetEditingSheet: View {
             .foregroundColor(.primary))
             .fontWeight(.regular)
             .navigationBarItems(trailing:
-                                    Button("Finish") {
+                                    Button("Save") {
                                                 showingAlert = true
                                             }
-                                            .alert("Error", isPresented: $showingAlert, actions: {
+                                            .alert("Build Error", isPresented: $showingAlert, actions: {
                                                 Button("OK", action: {dismiss()})
                                                     }, message: {
-                                                        Text("SAVE_CURRENT_WIDGET_PREFERENCES does not exist.")
+                                                        Text("This feature does not exist in your current build. SAVE_CURRENT_WIDGET_PREFERENCES does not exist.")
                                                     }) .foregroundColor(.accentColor)
                 .foregroundColor(.primary))
                 .fontWeight(.bold)
