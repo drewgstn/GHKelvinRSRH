@@ -9,6 +9,7 @@ import SwiftUI
 import AVFoundation
 
 struct ConvertView: View {
+    @State var isPlaying : Bool = false
     @State private var tempValue = 0.0
     @State private var currentScale = ""
     @State private var lang = 0
@@ -25,14 +26,14 @@ struct ConvertView: View {
     @FocusState private var amountIsFocused: Bool
     private let pasteboard = UIPasteboard.general
     
-    //Change all scales to selectable dropdowns, easier to make buttons larger and resize better with larger text options. DROPDOWNS - All scales available on both sides of the scale, (converting from and to) hide/gray out if selected already (will save time and code later if that happens) All changes for v1(275.15)
-    
+    // Change all scales to selectable dropdowns, easier to make buttons larger and resize better with larger text options. DROPDOWNS - All scales available on both sides of the scale, (converting from and to) hide/gray out if selected already (will save time and code later if that happens) All changes for v1(275.15)
+    // #16 - bug - From: To Identifier does not function as intended; fix - add indentifier
     let tempScales = ["Kelvin", "Fahrenheit", "Celsius"]
     
     let tempScalesTo = ["Celsius", "Fahrenheit", "Kelvin"]
     
     
-    // ADD FROM CONVERSION
+    // ADD FROM CONVERSION IDENTIFIER
     var calculation: Double {
         if currentScale == "Fahrenheit" {
             return tempValue * 9 / 5 + 32
@@ -86,34 +87,56 @@ struct ConvertView: View {
                         .padding(.top, -20)
                     ZStack {
                         HStack {
-                            Button(action: Copy) {
-                                Image(systemName: "doc.on.doc")
-                                    .font(.system(size: 20))
-                                    .padding(.leading, 10)
-                                    .padding(.top, 150)
+                            Button(action: {
+                                presentAlert = true
+                            }){
+                                Label("COPY", systemImage: "doc.on.doc")
+                                    .frame(width: 20, height: 20)
                                     .foregroundColor(.accentColor)
-                                    .padding(.trailing, 5)
+                                    .listRowSeparator(.hidden)
+                                    .font(.system(size: 20))
+                                    .labelStyle(IconOnlyLabelStyle())
+                                    
+                                    
+                                
                             }
                             
-                            
-                            
-                            Button(action: SaveConversion) {
-                                Image(systemName: "star")
-                                    .font(.system(size: 20))
-                                    .padding(.top, 150)
+                            .listRowSeparator(.hidden)
+                            .padding(.leading, 10)
+                            .padding(.trailing, 15)
+                            .padding(.top, 150)
+
+                            Button(action: {
+                                presentAlert = true
+                            }){
+                                Label("STAR", systemImage: "star")
+                                    
+                                    .frame(width: 20, height: 20)
                                     .foregroundColor(.accentColor)
+                                    .listRowSeparator(.hidden)
+                                    .font(.system(size: 20))
+                                    
+                                    .labelStyle(IconOnlyLabelStyle())
                             }
-                            
+                            .padding(.top, 150)
                             
                             Button(action: Speak) {
                                 
-                                Image(systemName: "play.circle.fill")
+                                Image(systemName: self.isPlaying == true ? "pause.circle.fill" : "play.circle.fill")
+                                    
                                     .font(.system(size: 30))
-                                    .padding(.leading, 210)
-                                    .padding(.top, 150)
+                                    
+                                    
                                     .foregroundColor(.accentColor)
                             }
+                            .padding(.top, 150)
+                            .padding(.leading, 210)
+                            .padding(.trailing, 10)
+                            
                         }
+                        
+                        .buttonStyle(BorderlessButtonStyle())
+                        
                         Text("TO_CONVERSION")
                             .foregroundColor(.accentColor)
                             .font(.system(size: 15))
@@ -121,16 +144,18 @@ struct ConvertView: View {
                             .padding(.bottom, 160.0)
                             .padding(.leading, -155)
                         Text("\(calculation.formatted())")
+                            .textSelection(.enabled)
                             .foregroundColor(.accentColor)
                             .font(.system(size: 25))
                             .fontWeight(.bold)
                             .listRowSeparator(.hidden)
                             .padding(.bottom, 110.0)
                             .padding(.leading, -155)
+                            
                     }
                 }
                 List {
-                    Section(header: Text("user options"), footer: Text("COPY_FAVORITE_TTS")) {
+                    Section(header: Text("toolbar testing field"), footer: Text("COPY_FAVORITE_TTS")) {
                         HStack {
                             Button(action: {
                                 presentAlert = true
@@ -141,6 +166,7 @@ struct ConvertView: View {
                                     .listRowSeparator(.hidden)
                                     .font(.system(size: 20))
                                     .labelStyle(IconOnlyLabelStyle())
+                                    .padding(.leading, 20)
                                 
                             }
                             .listRowSeparator(.hidden)
@@ -171,31 +197,15 @@ struct ConvertView: View {
                             })
                             .listRowSeparator(.hidden)
                             
-                            Button(action: {
-                                presentAlert = true
-                            }){
-                                Label("COPY", systemImage: "play.circle.fill")
-                                    .frame(width: 20, height: 20)
-                                    .foregroundColor(.accentColor)
-                                    .listRowSeparator(.hidden)
-                                    .font(.system(size: 30))
-                                    .labelStyle(IconOnlyLabelStyle())
+                            Button(action: Speak) {
                                 
+                                Image(systemName: self.isPlaying == true ? "pause.circle.fill" : "play.circle.fill")
+                                        
+                                    .font(.system(size: 30))
+                                    .padding(.leading, 220)
+                                    .foregroundColor(.accentColor)
                             }
                             
-                            .alert("Save Calculation", isPresented: $presentAlert, actions: {
-                                TextField("Label", text: $username)
-                                
-                                
-                                
-                                
-                                Button("Save", action: {})
-                                Button("Cancel", role: .cancel, action: {})
-                            }, message: {
-                                Text("Save current calculation")
-                            })
-                            .listRowSeparator(.hidden)
-                            .padding(.leading, 220)
                         }
                         // *ADD BACK AFTER BUG SQUASHED* .listRowSeparator(.hidden)
                     }
@@ -281,6 +291,8 @@ struct ConvertView: View {
             func Copy() { }
     
             func Speak() {
+                self.isPlaying.toggle()
+                
                 let utterance = AVSpeechUtterance(string: "\(calculation)")
                 utterance.voice = AVSpeechSynthesisVoice()
                 

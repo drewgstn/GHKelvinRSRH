@@ -14,7 +14,7 @@
 			<key>Key</key>
 			<string>version_settings</string>
 			<key>DefaultValue</key>
-			<string>1.0(274.15)</string>
+			<string>1.0(274.01)</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -45,6 +45,16 @@
 			<string>favorites_settings</string>
 			<key>DefaultValue</key>
 			<string>0</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Internal Version</string>
+			<key>Key</key>
+			<string>internal_settings</string>
+			<key>DefaultValue</key>
+			<string>1.0(274.01)</string>
 		</dict>
 	</array>
 </dict>
