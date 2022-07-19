@@ -86,7 +86,7 @@ struct ConvertView: View {
                         .padding(.top, -20)
                     ZStack {
                         HStack {
-                            Button(action: ConversionSettings) {
+                            Button(action: Copy) {
                                 Image(systemName: "doc.on.doc")
                                     .font(.system(size: 20))
                                     .padding(.leading, 10)
@@ -105,7 +105,7 @@ struct ConvertView: View {
                             }
                             
                             
-                            Button(action: ConversionSettings) {
+                            Button(action: Speak) {
                                 
                                 Image(systemName: "play.circle.fill")
                                     .font(.system(size: 30))
@@ -143,17 +143,6 @@ struct ConvertView: View {
                                     .labelStyle(IconOnlyLabelStyle())
                                 
                             }
-                            .alert("Save Calculation", isPresented: $presentAlert, actions: {
-                                TextField("Name", text: $username)
-                                
-                                
-                                
-                                
-                                Button("Save", action: {})
-                                Button("Cancel", role: .cancel, action: {})
-                            }, message: {
-                                Text("Save current calculation")
-                            })
                             .listRowSeparator(.hidden)
                             .padding(.trailing, 15)
                             
@@ -161,6 +150,7 @@ struct ConvertView: View {
                                 presentAlert = true
                             }){
                                 Label("STAR", systemImage: "star")
+                                    
                                     .frame(width: 20, height: 20)
                                     .foregroundColor(.accentColor)
                                     .listRowSeparator(.hidden)
@@ -192,6 +182,7 @@ struct ConvertView: View {
                                     .labelStyle(IconOnlyLabelStyle())
                                 
                             }
+                            
                             .alert("Save Calculation", isPresented: $presentAlert, actions: {
                                 TextField("Label", text: $username)
                                 
@@ -208,6 +199,7 @@ struct ConvertView: View {
                         }
                         // *ADD BACK AFTER BUG SQUASHED* .listRowSeparator(.hidden)
                     }
+                    .buttonStyle(BorderlessButtonStyle())
                 }
             }
             .navigationTitle("Convert")
@@ -215,7 +207,7 @@ struct ConvertView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu(content: {
                         Section {
-                            Button(action: ConversionSettings) {
+                            Button(action: HideDecimal) {
                                 Label("Hide Decimal", systemImage: "eye.slash")
                             }
                             
@@ -239,7 +231,7 @@ struct ConvertView: View {
                                             })
                                     
                                     
-                                    Button(action: ConversionSettings) {
+                                    Button(action: Speak) {
                                         Label("langs attached btn", systemImage: "square.and.arrow.down")
                                     }
                                     Label("English", systemImage: "textformat").tag(0)
@@ -285,8 +277,10 @@ struct ConvertView: View {
                 }
             }
             func SaveConversion() { }
+            func HideDecimal() { }
+            func Copy() { }
     
-            func ConversionSettings() {
+            func Speak() {
                 let utterance = AVSpeechUtterance(string: "\(calculation)")
                 utterance.voice = AVSpeechSynthesisVoice()
                 
