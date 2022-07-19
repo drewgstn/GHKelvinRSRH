@@ -16,6 +16,9 @@ struct ConvertView: View {
     @State private var text: String = ""
     @Environment(\.dismiss) private var dismiss
     @State private var buttonText  = "Copy to clipboard"
+    @State private var username: String = ""
+    @State private var password: String = ""
+    @State private var presentAlert = false
     @State private var isShowingPopover = false
     @State var RIisPresented: Bool = false
     @State var WEisPresented: Bool = false
@@ -24,7 +27,9 @@ struct ConvertView: View {
     
     //Change all scales to selectable dropdowns, easier to make buttons larger and resize better with larger text options. DROPDOWNS - All scales available on both sides of the scale, (converting from and to) hide/gray out if selected already (will save time and code later if that happens) All changes for v1(275.15)
     
-    let tempScales = ["Celsius", "Fahrenheit", "Kelvin"]
+    let tempScales = ["Kelvin", "Fahrenheit", "Celsius"]
+    
+    let tempScalesTo = ["Celsius", "Fahrenheit", "Kelvin"]
     
     
     // ADD FROM CONVERSION
@@ -46,7 +51,7 @@ struct ConvertView: View {
                 Section {
                     
                     Picker("Unit", selection: $currentScale) {
-                        ForEach(tempScales, id: \.self) {
+                        ForEach(tempScalesTo, id: \.self) {
                             Text("\($0)")
                         }
                     }
@@ -81,7 +86,7 @@ struct ConvertView: View {
                         .padding(.top, -20)
                     ZStack {
                         HStack {
-                            Button(action: EditLocations) {
+                            Button(action: ConversionSettings) {
                                 Image(systemName: "doc.on.doc")
                                     .font(.system(size: 20))
                                     .padding(.leading, 10)
@@ -90,7 +95,9 @@ struct ConvertView: View {
                                     .padding(.trailing, 5)
                             }
                             
-                            Button(action: EditLocations) {
+                            
+                            
+                            Button(action: SaveConversion) {
                                 Image(systemName: "star")
                                     .font(.system(size: 20))
                                     .padding(.top, 150)
@@ -98,7 +105,7 @@ struct ConvertView: View {
                             }
                             
                             
-                            Button(action: EditLocations) {
+                            Button(action: ConversionSettings) {
                                 
                                 Image(systemName: "play.circle.fill")
                                     .font(.system(size: 30))
@@ -117,8 +124,89 @@ struct ConvertView: View {
                             .foregroundColor(.accentColor)
                             .font(.system(size: 25))
                             .fontWeight(.bold)
+                            .listRowSeparator(.hidden)
                             .padding(.bottom, 110.0)
                             .padding(.leading, -155)
+                    }
+                }
+                List {
+                    Section(header: Text("user options"), footer: Text("COPY_FAVORITE_TTS")) {
+                        HStack {
+                            Button(action: {
+                                presentAlert = true
+                            }){
+                                Label("COPY", systemImage: "doc.on.doc")
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(.accentColor)
+                                    .listRowSeparator(.hidden)
+                                    .font(.system(size: 20))
+                                    .labelStyle(IconOnlyLabelStyle())
+                                
+                            }
+                            .alert("Save Calculation", isPresented: $presentAlert, actions: {
+                                TextField("Name", text: $username)
+                                
+                                
+                                
+                                
+                                Button("Save", action: {})
+                                Button("Cancel", role: .cancel, action: {})
+                            }, message: {
+                                Text("Save current calculation")
+                            })
+                            .listRowSeparator(.hidden)
+                            .padding(.trailing, 15)
+                            
+                            Button(action: {
+                                presentAlert = true
+                            }){
+                                Label("STAR", systemImage: "star")
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(.accentColor)
+                                    .listRowSeparator(.hidden)
+                                    .font(.system(size: 20))
+                                    .labelStyle(IconOnlyLabelStyle())
+                                
+                            }
+                            .alert("Save Calculation", isPresented: $presentAlert, actions: {
+                                TextField("Label", text: $username)
+                                
+                                
+                                
+                                
+                                Button("Save", action: {})
+                                Button("Cancel", role: .cancel, action: {})
+                            }, message: {
+                                Text("Save current calculation")
+                            })
+                            .listRowSeparator(.hidden)
+                            
+                            Button(action: {
+                                presentAlert = true
+                            }){
+                                Label("COPY", systemImage: "play.circle.fill")
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(.accentColor)
+                                    .listRowSeparator(.hidden)
+                                    .font(.system(size: 30))
+                                    .labelStyle(IconOnlyLabelStyle())
+                                
+                            }
+                            .alert("Save Calculation", isPresented: $presentAlert, actions: {
+                                TextField("Label", text: $username)
+                                
+                                
+                                
+                                
+                                Button("Save", action: {})
+                                Button("Cancel", role: .cancel, action: {})
+                            }, message: {
+                                Text("Save current calculation")
+                            })
+                            .listRowSeparator(.hidden)
+                            .padding(.leading, 220)
+                        }
+                        // *ADD BACK AFTER BUG SQUASHED* .listRowSeparator(.hidden)
                     }
                 }
             }
@@ -127,7 +215,7 @@ struct ConvertView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu(content: {
                         Section {
-                            Button(action: EditLocations) {
+                            Button(action: ConversionSettings) {
                                 Label("Hide Decimal", systemImage: "eye.slash")
                             }
                             
@@ -135,8 +223,24 @@ struct ConvertView: View {
                             Menu(content: {
                                 Picker("Color Scheme", selection: $lang) {
                                     
-                                    Button(action: EditLocations) {
-                                        Label("langs attached btn", systemImage: "button.programmable")
+                                    Button("change language alert") {
+                                                presentAlert = true
+                                            }
+                                            .alert("Save Calculation", isPresented: $presentAlert, actions: {
+                                                TextField("Name", text: $username)
+
+                        
+
+                                                
+                                                Button("Save", action: {})
+                                                Button("Cancel", role: .cancel, action: {})
+                                            }, message: {
+                                                Text("Save current calculation")
+                                            })
+                                    
+                                    
+                                    Button(action: ConversionSettings) {
+                                        Label("langs attached btn", systemImage: "square.and.arrow.down")
                                     }
                                     Label("English", systemImage: "textformat").tag(0)
                                     Label("Arabic", systemImage: "exclamationmark.triangle").tag(1)
@@ -180,7 +284,9 @@ struct ConvertView: View {
                     }
                 }
             }
-            func EditLocations() {
+            func SaveConversion() { }
+    
+            func ConversionSettings() {
                 let utterance = AVSpeechUtterance(string: "\(calculation)")
                 utterance.voice = AVSpeechSynthesisVoice()
                 
