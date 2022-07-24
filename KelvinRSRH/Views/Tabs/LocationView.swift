@@ -29,6 +29,7 @@ struct LocationView: View {
     @State var RIisPresented: Bool = false
     @State var WEisPresented: Bool = false
     @State var isPresented: Bool = false
+    @State var isHidden = false
     var body: some View {
         NavigationView {
             ScrollView {
@@ -46,28 +47,24 @@ struct LocationView: View {
                         .padding(.top, 130)
                     
                     
-                    Button(action: {
-                        isPresented = true
+/*                    Button(action: {
+                        isHidden.toggle()
                     }) {
                         Label("XMARK", systemImage: "xmark")
                             .frame(width: 20, height: 20)
                             .foregroundColor(.secondary)
                             .fontWeight(.medium)
-                            .padding(.leading, 300)
-                            .padding(.bottom, 210)
-                            
                             .imageScale(.small)
                             .labelStyle(IconOnlyLabelStyle())
                     }
-                    
-                    Image("graphic")
+                    .padding(.leading, 300)
+                    .padding(.bottom, 210)
+*/
+                    Image("kelvinwidgetgpc")
                         .resizable()
                         .frame(width: 55, height: 120)
                         .padding(.bottom, 80)
-                        
-                    
-                    
-                    
+
                     Text("Custom Widgets")
                         .font(.headline)
                         .fontWeight(.semibold)
@@ -87,21 +84,14 @@ struct LocationView: View {
                     .padding(.top, 425)
                         
                 }
-                
+                .opacity(isHidden ? 0 : 1)
                 .controlSize(.large)
-                
-                
-                ZStack {
-                    Text("Example")
-                    Color("systemGray6.2")
-                    
-                        .frame(width: 500, height: 1400)
-                    
+/*
+                if isHidden {
+                    Text("widgetEditorBlank")
+                    .padding(.bottom)
                 }
-                
-                
-                
-                
+ */
             }
             .padding()
             .background(Color("systemGray6.2"))

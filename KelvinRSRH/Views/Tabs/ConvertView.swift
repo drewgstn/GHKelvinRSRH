@@ -85,6 +85,7 @@ struct ConvertView: View {
                         .padding(.leading, 50)
                         .padding(.trailing, 60)
                         .padding(.top, -20)
+                        .submitLabel(.done)
                     ZStack {
                         HStack {
                             Button(action: {

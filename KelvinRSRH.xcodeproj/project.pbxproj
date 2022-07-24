@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		286DBDDB28662343003C30F9 /* WidgetEditingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286DBDDA28662343003C30F9 /* WidgetEditingSheet.swift */; };
 		288103122865FED100FC6CF7 /* RISheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288103112865FED100FC6CF7 /* RISheet.swift */; };
+		288BB2B72889B17200F01852 /* WidgetStylesSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288BB2B62889B17200F01852 /* WidgetStylesSheet.swift */; };
 		288EED7928655591002B4BBD /* TabViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EED7828655591002B4BBD /* TabViews.swift */; };
 		288EED7B28655604002B4BBD /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EED7A28655604002B4BBD /* FavoritesView.swift */; };
 		288EED7D28655642002B4BBD /* InternalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288EED7C28655642002B4BBD /* InternalView.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		286DBDDA28662343003C30F9 /* WidgetEditingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEditingSheet.swift; sourceTree = "<group>"; };
 		288103112865FED100FC6CF7 /* RISheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RISheet.swift; sourceTree = "<group>"; };
+		288BB2B62889B17200F01852 /* WidgetStylesSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetStylesSheet.swift; sourceTree = "<group>"; };
 		288EED7828655591002B4BBD /* TabViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViews.swift; sourceTree = "<group>"; };
 		288EED7A28655604002B4BBD /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		288EED7C28655642002B4BBD /* InternalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalView.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			children = (
 				288103112865FED100FC6CF7 /* RISheet.swift */,
 				286DBDDA28662343003C30F9 /* WidgetEditingSheet.swift */,
+				288BB2B62889B17200F01852 /* WidgetStylesSheet.swift */,
 			);
 			path = Sheets;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				288EED7D28655642002B4BBD /* InternalView.swift in Sources */,
 				288EED7F2865568A002B4BBD /* LocationView.swift in Sources */,
 				288EED7B28655604002B4BBD /* FavoritesView.swift in Sources */,
+				288BB2B72889B17200F01852 /* WidgetStylesSheet.swift in Sources */,
 				288EED81286556C1002B4BBD /* ConvertView.swift in Sources */,
 				288103122865FED100FC6CF7 /* RISheet.swift in Sources */,
 				286DBDDB28662343003C30F9 /* WidgetEditingSheet.swift in Sources */,
